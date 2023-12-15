@@ -7,10 +7,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         category_list = [
-            {'name_cat': 'Крупы', 'desc_cat': 'зерно'},
-            {'name_cat': 'Сладости', 'desc_cat': 'конфеты и шоколад'},
-            {'name_cat': 'Напитки', 'desc_cat': 'Газировка, сок, энергетик'},
-            {'name_cat': 'Табак', 'desc_cat': 'Сигареты'}
+            {'name': 'Крупы', 'desc': 'зерно'},
+            {'name': 'Сладости', 'desc': 'конфеты и шоколад'},
+            {'name': 'Напитки', 'desc': 'Газировка, сок, энергетик'},
+            {'name': 'Табак', 'desc': 'Сигареты'}
         ]
 
         cat_for_create = []
