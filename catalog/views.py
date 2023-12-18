@@ -1,10 +1,19 @@
 from django.shortcuts import render
+from catalog.models import Product
 
 
 # Create your views here.
 def index(request):
-    return render(request, 'catalog/index.html')
+    product_list = Product.objects.all()
+    context = {
+        'object_list': product_list,
+        'title': "Главная"
+    }
+    return render(request, 'catalog/index.html', context)
 
 
 def index_1(request):
-    return render(request, 'catalog/index_1.html')
+    context = {
+        'title': "Контакты"
+    }
+    return render(request, 'catalog/index_1.html', context)
