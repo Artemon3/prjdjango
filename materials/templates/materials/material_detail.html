@@ -1,0 +1,25 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="col-12">
+    <div class="row">
+        <h2><p>{{ object.title }} {{ object.slug }}</p></h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-muted">
+        <p>Views count: {{ object.views_count }}</p>
+        <p>Created at: {{ object.date_published }}</p>
+        <p>Updated at: {{ object.date_modified }}</p>
+    </div>
+<div class="card-footer">
+    Просмотры: {{ object.views_count }}
+</div>
+</div>
+<div class="d-flex justify-content-between align-items-center">
+    <a href="{% url 'materials:list' %}"
+       class="btn btn-sm btn-outline-danger">Вернуться</a>
+</div>
+
+
+{% endblock %}
