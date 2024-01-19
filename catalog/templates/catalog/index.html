@@ -1,9 +1,11 @@
 {% extends 'catalog/base.html' %}
 {% load my_tags %}
 {% block content %}
+{% if user.is_authenticated %}
     <div class="col-12 mb-5">
         <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">Добавить продукт</a>
     </div>
+{% endif %}
     <{% for object in object_list %}
     <div class="col-md-4">
         <img class="card-img-top"
@@ -13,10 +15,12 @@
             <p class="card-text">{{ object.name|title }}</p>
             <p class="card-text">{{ object.desc|truncatechars:100 }}</p>
             <div class="d-flex justify-content-between align-items-center">
+                {% if user.is_authenticated %}
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                     <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
                 </div>
+                {% endif %}
                 <small class="text-muted">9 mins</small>
             </div>
         </div>

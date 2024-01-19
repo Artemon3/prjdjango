@@ -31,7 +31,6 @@ from users.models import User
 #
 
 class RegisterView(CreateView):
-
     model = User
     form_class = UserRegisterForm
     success_url = reverse_lazy('users:login')
@@ -57,7 +56,6 @@ class RegisterView(CreateView):
 
 
 def verify_view(request):
-
     code = int(request.GET.get('code'))
     user = User.objects.get(verified_password=code)
     user.verified = True
@@ -65,24 +63,21 @@ def verify_view(request):
     return render(request, 'users/verifying.html')
 
 
-# class ProfileView(UpdateView):
-#
-#     model = User
-#     form_class = UserProfileForm
-#     success_url = reverse_lazy('users:profile')
-#
-#     def get_object(self, queryset=None):
-#         return self.request.user
-#
-#
-# def generate_new_password(request):
-#     new_password = ''.join([str(random.randint(0, 9)) for _ in range(12)])
-#     send_mail(
-#         subject='Вы сменили пароль',
-#         message=f'Ваш новый пароль: {new_password}',
-#         from_email=settings.EMAIL_HOST_USER,
-#         recipient_list=[request.user.email]
-#     )
-#     request.user.set_password(new_password)
-#     request.user.save()
-#     return redirect(reverse('catalog:merchandise'))
+def reset_password(request):
+    if request.method == 'POST':
+        # получение почты из формы
+        user_email = request.POST.get('email')
+        # генерация пароля
+        new_password = ''.join([str(random.randint(0, 9)) for _ in range(12)])
+        send_mail(
+            subject='восстановить пароль',
+            message=f'пароль {new_password}',
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[request.user.email]
+        )
+        # поиск пользователя с указанной почтой
+        user_reset_pass = User.objects.get(email=user_email)
+        # обновление пароля этому пользователю
+        user_reset_pass.set_password(new_password)
+        user_reset_pass.save()
+        return render(request, 'users/reset.html')
