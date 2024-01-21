@@ -43,6 +43,14 @@ def verify_view(request):
     user.save()
     return render(request, 'users/verifying.html')
 
+class ProfileView(UpdateView):
+    model = User
+    form_class = UserProfileForm
+    success_url = reverse_lazy('users:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
 
 def reset_password(request):
     if request.method == 'POST':
