@@ -11,25 +11,6 @@ from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
 
 
-# Create your views here.
-
-# class RegisterView(CreateView):
-#     model = User
-#     form_class = UserRegisterForm
-#     template_name = 'users/register.html'
-#     success_url = reverse_lazy('users:login')
-#
-#     def form_valid(self, form):
-#         new_user = form.save()
-#         send_mail(
-#             subject='Winner!!',
-#             message='Registeration!!!',
-#             from_email=settings.EMAIL_HOST_USER,
-#             recipient_list=[new_user.email]
-#         )
-#         return super().form_valid(form)
-#
-
 class RegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
@@ -80,4 +61,4 @@ def reset_password(request):
         # обновление пароля этому пользователю
         user_reset_pass.set_password(new_password)
         user_reset_pass.save()
-        return render(request, 'users/reset.html')
+        return render(request, 'catalog/index.html')

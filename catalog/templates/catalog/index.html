@@ -14,6 +14,7 @@
         <div class="card-body">
             <p class="card-text">{{ object.name|title }}</p>
             <p class="card-text">{{ object.desc|truncatechars:100 }}</p>
+            <p class="card-text">{{ object.owner }}</p>
             <div class="d-flex justify-content-between align-items-center">
                 {% if user.is_authenticated %}
                 <div class="btn-group">
