@@ -43,6 +43,7 @@ def verify_view(request):
     user.save()
     return render(request, 'users/verifying.html')
 
+
 class ProfileView(UpdateView):
     model = User
     form_class = UserProfileForm
@@ -69,4 +70,4 @@ def reset_password(request):
         # обновление пароля этому пользователю
         user_reset_pass.set_password(new_password)
         user_reset_pass.save()
-        return render(request, 'catalog/index.html')
+    return render(request, 'users/reset.html')
