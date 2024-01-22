@@ -3,7 +3,7 @@
 {% block content %}
 {% if user.is_authenticated %}
     <div class="col-12 mb-5">
-        <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">Добавить продукт</a>
+        <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">Сменить пароль</a>
     </div>
 {% endif %}
     <{% for object in object_list %}
@@ -22,7 +22,6 @@
                     <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
                 </div>
                 {% endif %}
-                <small class="text-muted">9 mins</small>
             </div>
         </div>
     </div>
