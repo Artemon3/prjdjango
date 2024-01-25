@@ -1,6 +1,8 @@
 import random
 from random import randint
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
@@ -36,6 +38,7 @@ class RegisterView(CreateView):
         return super().form_valid(form)
 
 
+@login_required
 def verify_view(request):
     code = int(request.GET.get('code'))
     user = User.objects.get(verified_password=code)
@@ -44,7 +47,7 @@ def verify_view(request):
     return render(request, 'users/verifying.html')
 
 
-class ProfileView(UpdateView):
+class ProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserProfileForm
     success_url = reverse_lazy('users:profile')
@@ -53,6 +56,7 @@ class ProfileView(UpdateView):
         return self.request.user
 
 
+@login_required
 def reset_password(request):
     if request.method == 'POST':
         # получение почты из формы

@@ -15,6 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'desc')
 
+
 @admin.register(Version)
 class VersionAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'version_number',)

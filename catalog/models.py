@@ -27,7 +27,6 @@ class Product(models.Model):
     date_lastmod = models.DateTimeField(verbose_name='дата изменения', **NULLABLE)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='владелец', **NULLABLE)
 
-
     def __str__(self):
         return f'{self.name}'
 
