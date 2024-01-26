@@ -1,0 +1,47 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Apple",
+      "desc": "green",
+      "image": "",
+      "category": null,
+      "price_one": null,
+      "date_creation": null,
+      "date_lastmod": null,
+      "owner": 4,
+      "is_published": false
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Test",
+      "desc": "Test",
+      "image": "",
+      "category": null,
+      "price_one": null,
+      "date_creation": null,
+      "date_lastmod": null,
+      "owner": 7,
+      "is_published": false
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "chery",
+      "desc": "red",
+      "image": "",
+      "category": null,
+      "price_one": null,
+      "date_creation": null,
+      "date_lastmod": null,
+      "owner": 8,
+      "is_published": false
+    }
+  }
+]
