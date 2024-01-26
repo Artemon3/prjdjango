@@ -41,11 +41,11 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     permission_required = 'catalog.change_product'
     success_url = reverse_lazy('catalog:index')
 
-    def get_object(self, queryset=None):
-        self.object = super().get_object(queryset)
-        if self.object.owner != self.object.user:
-            return HttpResponseForbidden
-        return self.object
+    # def get_object(self, queryset=None):
+    #     self.object = super().get_object(queryset)
+    #     if self.object.owner != self.object.user:
+    #         return HttpResponseForbidden
+    #     return self.object
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
