@@ -36,7 +36,6 @@ class Product(models.Model):
         verbose_name_plural = 'продукты'
 
 
-
 class Version(models.Model):
     name = models.ForeignKey(Product, on_delete=models.CASCADE)
     version_number = models.IntegerField(default=0, verbose_name='номер версии')
