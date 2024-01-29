@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 {% if user.is_authenticated %}
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <a href="{% url 'catalog:view_product' object.pk %}"  class="btn btn-sm btn-outline-secondary">View</a>
                     <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
                 </div>
                 {% endif %}
