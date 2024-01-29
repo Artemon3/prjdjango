@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.forms import inlineformset_factory
 from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 
 from django.shortcuts import render
 
@@ -34,6 +34,9 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
+
+class ProductDetailView(LoginRequiredMixin, DetailView):
+    model = Product
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
