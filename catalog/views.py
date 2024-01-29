@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.cache import cache
 from django.forms import inlineformset_factory
 from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
@@ -9,6 +11,7 @@ from django.shortcuts import render
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Version
+from catalog.services import get_cached_subjects_for_product
 
 
 # Create your views here.
@@ -37,6 +40,13 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        subject_list = get_cached_subjects_for_product(self.object.pk)
+        context_data['versions'] = subject_list
+        return context_data
+
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
