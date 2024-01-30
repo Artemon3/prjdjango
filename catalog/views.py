@@ -43,8 +43,7 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        subject_list = get_cached_subjects_for_product(self.object.pk)
-        context_data['versions'] = subject_list
+        context_data['versions'] = get_cached_subjects_for_product(self.object.pk)
         return context_data
 
 
