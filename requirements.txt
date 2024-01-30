@@ -1,0 +1,7 @@
+async-timeout==4.0.3
+redis==5.0.1
+psycopg2
+django
+pytils
+Pillow
+python-dotenv
